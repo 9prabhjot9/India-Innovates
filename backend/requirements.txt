@@ -1,0 +1,26 @@
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+pydantic==2.10.3
+python-dotenv==1.0.1
+httpx==0.28.0
+websockets==14.1
+python-multipart==0.0.12
+
+# NLP Pipeline
+spacy==3.8.3
+transformers==4.47.0
+torch==2.5.1
+
+# Database drivers
+neo4j==5.26.0
+asyncpg==0.30.0
+sqlalchemy==2.0.36
+
+# Kafka streaming
+aiokafka==0.11.0
+
+# Utilities
+numpy==2.2.0
+pandas==2.2.3
+scikit-learn==1.6.0
+aiofiles==24.1.0
