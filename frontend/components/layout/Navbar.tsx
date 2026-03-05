@@ -37,7 +37,7 @@ export default function Navbar({ alertCount = 14, onRefresh, isRefreshing }: Nav
           </div>
           <div>
             <div className="font-mono text-xs font-bold tracking-[0.15em] text-primary leading-none">
-              CHANAKYA
+              THEIA
             </div>
             <div className="font-mono text-[9px] text-muted-foreground/60 leading-none tracking-widest">
               GOE v2.4.1

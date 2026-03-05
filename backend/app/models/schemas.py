@@ -1,4 +1,4 @@
-"""Pydantic schemas for Project Chanakya API."""
+"""Pydantic schemas for Project Theia API."""
 
 from typing import Optional, List, Dict, Any, Union
 from enum import Enum

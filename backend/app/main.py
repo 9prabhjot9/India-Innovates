@@ -1,5 +1,5 @@
 """
-Project Chanakya — Global Ontology Engine
+Project Theia — Global Ontology Engine
 FastAPI Backend — Core Intelligence API
 """
 
@@ -21,7 +21,7 @@ from app.data.mock_data import NODES, EDGES, FEED_ITEMS
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Startup and shutdown events."""
-    print("🔍 Project Chanakya GOE — Starting Intelligence Engine...")
+    print("🔍 Project Theia GOE — Starting Intelligence Engine...")
     print("✅ Neo4j connection simulated")
     print("✅ PostgreSQL connection simulated")
     print("✅ Kafka consumer pipeline active")
@@ -32,10 +32,10 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="Project Chanakya — Global Ontology Engine",
+    title="Project Theia — Global Ontology Engine",
     description=(
         "AI-powered strategic intelligence platform for geopolitical analysis, "
-        "defense assessment, and strategic foresight. Powers the Chanakya Dashboard."
+        "defense assessment, and strategic foresight. Powers the Theia Dashboard."
     ),
     version="2.4.1",
     lifespan=lifespan,
@@ -68,7 +68,7 @@ app.include_router(sdi.router, prefix="/api/sdi", tags=["Strategic Dissonance In
 @app.get("/", tags=["System"])
 async def root():
     return {
-        "system": "Project Chanakya — Global Ontology Engine",
+        "system": "Project Theia — Global Ontology Engine",
         "version": "2.4.1",
         "status": "operational",
         "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -162,7 +162,7 @@ async def websocket_feed(websocket: WebSocket):
                 "sdiImpact": random.randint(3, 15),
                 "entities": random.sample(["IND", "CHN", "USA", "RUS", "PAK"], k=random.randint(1, 3)),
                 "verified": random.choice([True, False]),
-                "source": "OSINT Composite / Chanakya Pipeline",
+                "source": "OSINT Composite / Theia Pipeline",
             }
             await websocket.send_json({"type": "intel_update", "data": live_item})
     except WebSocketDisconnect:

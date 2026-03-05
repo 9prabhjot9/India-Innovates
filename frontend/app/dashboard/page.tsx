@@ -124,7 +124,7 @@ export default function DashboardPage() {
                 <span className="w-1 h-1 rounded-full bg-green-400 animate-pulse" />
                 LIVE
               </span>
-              <span>CHANAKYA GOE v2.4.1</span>
+              <span>THEIA GOE v2.4.1</span>
             </div>
           </div>
 

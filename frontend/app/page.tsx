@@ -187,7 +187,7 @@ export default function Home() {
               <Brain size={16} className="text-primary" />
             </div>
             <span className="font-mono text-sm font-bold tracking-[0.2em] text-primary/90">
-              PROJECT CHANAKYA
+              PROJECT THEIA
             </span>
           </div>
           <div className="flex items-center gap-4">
@@ -237,7 +237,7 @@ export default function Home() {
             <span className="text-glow-cyan text-primary">Project</span>
             <br />
             <span className="bg-gradient-to-r from-foreground via-foreground/90 to-foreground/60 bg-clip-text text-transparent">
-              Chanakya
+              Theia
             </span>
           </motion.h1>
 
@@ -355,7 +355,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <div className="font-mono text-xs text-primary/60 tracking-widest mb-3">SYSTEM ARCHITECTURE</div>
-            <h2 className="text-3xl font-bold mb-3">How Chanakya Works</h2>
+            <h2 className="text-3xl font-bold mb-3">How Theia Works</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-0">
             {[
@@ -395,7 +395,7 @@ export default function Home() {
               <span className="text-primary">Neither Should India.</span>
             </h2>
             <p className="text-muted-foreground mb-8 text-sm leading-relaxed">
-              Every minute of delay is intelligence lost. Project Chanakya processes
+              Every minute of delay is intelligence lost. Project Theia processes
               the global signal — transforming noise into national advantage.
             </p>
             <Link
@@ -403,7 +403,7 @@ export default function Home() {
               className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-[#070b14] font-bold text-sm rounded hover:bg-primary/90 transition-all glow-cyan"
             >
               <Brain size={16} />
-              ACCESS CHANAKYA DASHBOARD
+              ACCESS THEIA DASHBOARD
               <ArrowRight size={14} />
             </Link>
           </div>
@@ -416,7 +416,7 @@ export default function Home() {
           <div className="flex items-center gap-2">
             <Brain size={14} className="text-primary" />
             <span className="font-mono text-xs text-muted-foreground">
-              PROJECT CHANAKYA // INDIA INNOVATES
+              PROJECT THEIA // INDIA INNOVATES
             </span>
           </div>
           <div className="font-mono text-xs text-muted-foreground/50">

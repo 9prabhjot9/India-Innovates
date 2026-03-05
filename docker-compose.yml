@@ -1,6 +1,6 @@
 version: "3.9"
 
-name: project-chanakya
+name: project-theia
 
 services:
   # ─── Frontend (Next.js) ──────────────────────────────────────────────────────
@@ -17,7 +17,7 @@ services:
     depends_on:
       - backend
     networks:
-      - chanakya-net
+      - theia-net
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000"]
@@ -35,8 +35,8 @@ services:
     environment:
       - NEO4J_URI=bolt://neo4j:7687
       - NEO4J_USER=neo4j
-      - NEO4J_PASSWORD=${NEO4J_PASSWORD:-chanakya_secure_2025}
-      - POSTGRES_URL=postgresql://chanakya:${POSTGRES_PASSWORD:-chanakya_secure_2025}@postgres:5432/chanakya_db
+      - NEO4J_PASSWORD=${NEO4J_PASSWORD:-theia_secure_2025}
+      - POSTGRES_URL=postgresql://theia:${POSTGRES_PASSWORD:-theia_secure_2025}@postgres:5432/theia_db
       - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
       - OPENAI_API_KEY=${OPENAI_API_KEY:-}
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
@@ -49,7 +49,7 @@ services:
       kafka:
         condition: service_started
     networks:
-      - chanakya-net
+      - theia-net
     restart: unless-stopped
     volumes:
       - ./backend:/app
@@ -67,7 +67,7 @@ services:
       - "7474:7474"   # Neo4j Browser
       - "7687:7687"   # Bolt protocol
     environment:
-      - NEO4J_AUTH=neo4j/${NEO4J_PASSWORD:-chanakya_secure_2025}
+      - NEO4J_AUTH=neo4j/${NEO4J_PASSWORD:-theia_secure_2025}
       - NEO4J_PLUGINS=["apoc", "graph-data-science"]
       - NEO4J_dbms_security_procedures_unrestricted=apoc.*,gds.*
       - NEO4J_dbms_memory_heap_initial__size=512m
@@ -78,7 +78,7 @@ services:
       - neo4j_logs:/logs
       - neo4j_import:/var/lib/neo4j/import
     networks:
-      - chanakya-net
+      - theia-net
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:7474"]
@@ -93,18 +93,18 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_DB=chanakya_db
-      - POSTGRES_USER=chanakya
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-chanakya_secure_2025}
+      - POSTGRES_DB=theia_db
+      - POSTGRES_USER=theia
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-theia_secure_2025}
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./backend/scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
-      - chanakya-net
+      - theia-net
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U chanakya -d chanakya_db"]
+      test: ["CMD-SHELL", "pg_isready -U theia -d theia_db"]
       interval: 15s
       timeout: 5s
       retries: 5
@@ -119,7 +119,7 @@ services:
     volumes:
       - zookeeper_data:/var/lib/zookeeper/data
     networks:
-      - chanakya-net
+      - theia-net
     restart: unless-stopped
 
   kafka:
@@ -139,12 +139,12 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
-      # Chanakya intelligence topics
+      # Theia intelligence topics
       KAFKA_CREATE_TOPICS: "intel-feed:4:1,graph-updates:2:1,sdi-updates:2:1,scenario-requests:2:1"
     volumes:
       - kafka_data:/var/lib/kafka/data
     networks:
-      - chanakya-net
+      - theia-net
     restart: unless-stopped
 
   # ─── Kafka UI (Dev monitoring) ────────────────────────────────────────────────
@@ -153,12 +153,12 @@ services:
     ports:
       - "8080:8080"
     environment:
-      KAFKA_CLUSTERS_0_NAME: chanakya-kafka
+      KAFKA_CLUSTERS_0_NAME: theia-kafka
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
     depends_on:
       - kafka
     networks:
-      - chanakya-net
+      - theia-net
     restart: unless-stopped
     profiles:
       - dev
@@ -171,7 +171,7 @@ services:
     volumes:
       - redis_data:/data
     networks:
-      - chanakya-net
+      - theia-net
     restart: unless-stopped
     command: redis-server --appendonly yes
 
@@ -188,14 +188,14 @@ services:
       - frontend
       - backend
     networks:
-      - chanakya-net
+      - theia-net
     restart: unless-stopped
     profiles:
       - production
 
 # ─── Networks ────────────────────────────────────────────────────────────────
 networks:
-  chanakya-net:
+  theia-net:
     driver: bridge
     ipam:
       config:

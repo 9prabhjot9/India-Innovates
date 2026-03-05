@@ -1,4 +1,4 @@
-"""Mock data for Project Chanakya backend — mirrors frontend data with richer detail."""
+"""Mock data for Project Theia backend — mirrors frontend data with richer detail."""
 
 from datetime import datetime, timezone, timedelta
 import random

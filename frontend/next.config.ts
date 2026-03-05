@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   },
   images: {
     remotePatterns: [
-      { protocol: "https", hostname: "**.chanakya.gov.in" },
+      { protocol: "https", hostname: "**.theia.gov.in" },
       { protocol: "https", hostname: "**.mea.gov.in" },
     ],
   },

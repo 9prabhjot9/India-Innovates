@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Project Chanakya — Global Ontology Intelligence Engine",
+  title: "Project Theia — Global Ontology Intelligence Engine",
   description:
     "AI-powered strategic intelligence platform transforming geopolitical, economic, defense, and societal data into unified, continuously updating intelligence for national advantage.",
   keywords: ["intelligence", "geopolitics", "AI", "strategic", "India", "ontology"],
